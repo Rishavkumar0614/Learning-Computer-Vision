@@ -54,13 +54,24 @@ class handDetector():
 def main():
     cap = cv2.VideoCapture(0)
     detector = handDetector()
+    fourcc = cv2.VideoWriter_fourcc(*'XVID')
+    out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Cptures\\output.mp4', fourcc, 20.0, (640, 480))
+    
     while True:
         success, img = cap.read()
         if(success):
             img = detector.findHands(img)
             cv2.putText(img, 'Volume: ' + str(int(detector.volume.GetMasterVolumeLevelScalar() * 100)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
+            out.write(img)
             cv2.imshow("Image", img)
-        cv2.waitKey(1)
+        key = cv2.waitKey(1)
+        if key == ord('c'):
+            break
+    
+    cap.release()
+    out.release()
+    cv2.destroyAllWindows()
+    
 
 if __name__ == "__main__":
     main()

@@ -49,6 +49,8 @@ delayCounter = 0
 # Webcam
 cap = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon = 0.8, maxHands = 1)
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Cptures\\output.mp4', fourcc, 20.0, (1280, 720))
 
 while True:
     # Get image frame
@@ -97,6 +99,12 @@ while True:
     # Display
     key = cv2.waitKey(1)
     img = cv2.resize(img, (1280, 720))
+    out.write(img)
     cv2.imshow("Image", img)
     if key == ord('c'):
         myEquation = ''
+        break
+    
+    cap.release()
+    out.release()
+    cv2.destroyAllWindows()
