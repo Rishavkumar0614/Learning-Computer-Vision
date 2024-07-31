@@ -55,7 +55,7 @@ def main():
     cap = cv2.VideoCapture(0)
     detector = handDetector()
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Cptures\\output.mp4', fourcc, 20.0, (640, 480))
+    out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Captures\\output.mp4', fourcc, 20.0, (640, 480))
     
     while True:
         success, img = cap.read()

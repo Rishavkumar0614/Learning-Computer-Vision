@@ -50,7 +50,7 @@ delayCounter = 0
 cap = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon = 0.8, maxHands = 1)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Cptures\\output.mp4', fourcc, 20.0, (1280, 720))
+out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Captures\\output.mp4', fourcc, 20.0, (1280, 720))
 
 while True:
     # Get image frame
