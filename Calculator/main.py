@@ -51,13 +51,11 @@ cap = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon = 0.8, maxHands = 1)
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Captures\\output.mp4', fourcc, 20.0, (1280, 720))
-
 while True:
     # Get image frame
     success, img = cap.read()
     img = cv2.flip(img, 1)
     hands, img = detector.findHands(img)
-
     img = cv2.rectangle(img, (400, 100), (400 + 200, 100 + 50),
                   (225, 225, 225), cv2.FILLED)
 
@@ -105,6 +103,6 @@ while True:
         myEquation = ''
         break
     
-    cap.release()
-    out.release()
-    cv2.destroyAllWindows()
+cap.release()
+out.release()
+cv2.destroyAllWindows()
