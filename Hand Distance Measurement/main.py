@@ -19,6 +19,9 @@ y = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
 coff = np.polyfit(x, y, 2)  # y = Ax^2 + Bx + C
 
 # Loop
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('C:\\Users\\Rishavkumar\\Videos\\Captures\\output.mp4', fourcc, 20.0, (1280, 720))
+
 while True:
     success, img = cap.read()
     hands = detector.findHands(img, draw = False)[0]
@@ -38,10 +41,12 @@ while True:
         cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 255), 3)
         cvzone.putTextRect(img, f'{int(distanceCM)} cm', (x+5, y-10))
 
+    out.write(img)
     cv2.imshow("Image", img)
     key = cv2.waitKey(1)
     if (key == ord('c')):
         break
 
 cap.release()
+out.release()
 cv2.destroyAllWindows()
